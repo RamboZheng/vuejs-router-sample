@@ -3,9 +3,12 @@
     </head>
     <body>
         <div id="J-app" class="app" v-cloak>
-            <transition name="bounce">
-                <router-view></router-view>
-            </transition>
+            <!-- <transition name="bounce">  -->
+                <keep-alive>
+                    <router-view v-if="$route.meta.keepAlive"></router-view>
+                </keep-alive>
+                <router-view v-if="!$route.meta.keepAlive"></router-view>
+             <!-- </transition>  -->
         </div>
     </body>
 </html>

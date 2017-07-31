@@ -2,10 +2,8 @@ import '../css/index.css';
 import $ from 'jquery';
 import Vue from 'vue';
 import log from '../common/log.js';
-import VueRouter from 'vue-router';
-import router from './router.js'
-
-Vue.use(VueRouter);
+import router from '../router/router.js'
+import store from '../store/store.js'
 
 /**
  * main
@@ -19,6 +17,7 @@ $(function() {
  * class define
  */
 function IndexObj() {
+    log.d("count="+store.state.count);
 }
 
 /**
@@ -26,7 +25,7 @@ function IndexObj() {
  */
 IndexObj.prototype.initVue = function() {
     new Vue({
-        router
+        router, store
     }).$mount("#J-app");
     router.push("/new");
 };

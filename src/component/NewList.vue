@@ -8,12 +8,14 @@
                 </router-link>
             </li>
         </ul></div>
+        <div><input type="text" value="Hello World"/></div>
     </div>
 </template>
 
 <script>
 import bus from '../common/eventbus.js'
 import log from '../common/log.js'
+import store from '../store/store.js'
 
 export default {
     props: ['id'],
@@ -26,13 +28,27 @@ export default {
                 "意大利首都罗马遭遇60年不遇旱灾 民众用水犯愁",
                 "北京地铁苹果园站年底封站改造 预计封站至2020年",
                 "甘肃陇南奇婚异俗男嫁女娶 随女方改名换姓",
-                "多地明确“租房可落户” 你还会抢着买房吗？"
+                "多地明确“租房可落户” 你还会抢着买房吗？",
+                "两架美军轰炸机飞过朝鲜半岛 回应朝试射导弹",
+                "美政府又现重要人事变动：凯利出任白宫幕僚长",
+                "意大利首都罗马遭遇60年不遇旱灾 民众用水犯愁",
+                "北京地铁苹果园站年底封站改造 预计封站至2020年",
+                "甘肃陇南奇婚异俗男嫁女娶 随女方改名换姓",
+                "多地明确“租房可落户” 你还会抢着买房吗？",
+                "两架美军轰炸机飞过朝鲜半岛 回应朝试射导弹",
+                "两架美军轰炸机飞过朝鲜半岛 回应朝试射导弹",
+                "美政府又现重要人事变动：凯利出任白宫幕僚长",
+                "意大利首都罗马遭遇60年不遇旱灾 民众用水犯愁",
+                "北京地铁苹果园站年底封站改造 预计封站至2020年",
+                "甘肃陇南奇婚异俗男嫁女娶 随女方改名换姓",
+                "多地明确“租房可落户” 你还会抢着买房吗？",
+                "两架美军轰炸机飞过朝鲜半岛 回应朝试射导弹"
             ]
         }
     },
     mounted() {
-        bus.$off('event-back');
-        bus.$on('event-back', function(msg) {
+        log.d("newlist count="+this.$store.state.count);
+        bus.on('event-back', function(msg) {
             log.d(msg);
         })
     }
@@ -44,6 +60,7 @@ export default {
         height: 100%;
         background-color: #262927;
         box-sizing: border-box;
+        overflow: scroll;
     }
 
     .title {

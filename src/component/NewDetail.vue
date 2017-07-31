@@ -20,7 +20,7 @@ export default {
     methods: {
         back: function() {
             this.$router.push("/new");
-            bus.$emit('event-back', 'back');
+            bus.emit('event-back', 'back');
         }
     }
 }
