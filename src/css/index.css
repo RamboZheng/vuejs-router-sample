@@ -4,7 +4,10 @@
 
 body {
     margin: 0px;
-    overflow: hidden;
+}
+
+.app {
+  overflow: auto;
 }
 
 .fade-enter-active, .fade-leave-active {

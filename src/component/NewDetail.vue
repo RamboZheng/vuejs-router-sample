@@ -20,7 +20,8 @@ export default {
     methods: {
         back: function() {
             this.$router.push("/new");
-            bus.emit('event-back', 'back');
+            bus.emit('event-back', 'Hello Vue0');
+            this.$store.commit('back', 'Hello Vue1');
         }
     }
 }
@@ -28,14 +29,12 @@ export default {
 
 <style scoped>
     .root {
-        height: 100%;
-        background-color: #000000;
         box-sizing: border-box;
         text-align: center;
     }
 
     .name {
-        font-size: 30px;
+        font-size: 16px;
         font-weight: bold;
         color: yellow;
         background-color: #09af3e;
@@ -43,19 +42,19 @@ export default {
     }
 
     .desc {
-        font-size: 25px;
-        margin-top: 20px;
+        font-size: 15px;
         text-align: left;
-        color: white;
+        color: black;
         line-height: 200%;
         padding: 20px;
+        height: 100%;
     }
 
     .back {
         position: absolute;
         top: 26px;
-        left: 10px;
-        height: 40px;
+        left: 5px;
+        height: 20px;
     }
 
 </style>

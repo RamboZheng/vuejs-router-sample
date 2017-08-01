@@ -8,14 +8,18 @@
                 </router-link>
             </li>
         </ul></div>
-        <div><input type="text" value="Hello World"/></div>
+        <div class="area">
+            <input class="input-text" type="text" value="Hello World"/>
+        </div>
     </div>
 </template>
 
 <script>
 import bus from '../common/eventbus.js'
 import log from '../common/log.js'
-import store from '../store/store.js'
+import $ from 'jquery'
+
+var offsetTop = 0;
 
 export default {
     props: ['id'],
@@ -51,6 +55,17 @@ export default {
         bus.on('event-back', function(msg) {
             log.d(msg);
         })
+    },
+    activated() {
+        $(document).scrollTop(offsetTop);
+        var act = this.$store.state.action;
+        log.d(act);
+        log.d(offsetTop);
+    },
+    deactivated() {
+        offsetTop = $(document).scrollTop();
+        offsetTop = 100;
+        log.d("deactivated="+offsetTop);
     }
 }
 </script>
@@ -58,13 +73,12 @@ export default {
 <style scoped>
     .root {
         height: 100%;
-        background-color: #262927;
         box-sizing: border-box;
         overflow: scroll;
     }
 
     .title {
-        font-size: 50px;
+        font-size: 20px;
         font-weight: bold;
         text-align: center;
         padding: 25px;
@@ -72,16 +86,25 @@ export default {
     }
 
     .list {
-        margin-top: 40px;
+        margin-top: 20px;
     }
     
     li {
-        margin-top: 40px;
+        margin-top: 20px;
     }
 
     .name {
-        font-size: 30px;
+        font-size: 15px;
         font-weight: bold;
-        color: white;
+        color: black;
+    }
+
+    .area {
+        text-align: center;
+    }
+
+    .input-text {
+        font-size: 30px;
+        margin: 20px;
     }
 </style>
