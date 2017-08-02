@@ -3,7 +3,7 @@
         <div class="title">今日头条</div>
         <div class="list"><ul>
             <li v-for="title in list">
-                <router-link class="name" :to="{path:'/detail/'+title}">
+                <router-link class="name" :to="{ name:'detail', params: { title:title }}">
                     {{title}}
                 </router-link>
             </li>
@@ -54,18 +54,11 @@ export default {
         log.d("newlist count="+this.$store.state.count);
         bus.on('event-back', function(msg) {
             log.d(msg);
-        })
+        });
     },
     activated() {
-        $(document).scrollTop(offsetTop);
         var act = this.$store.state.action;
         log.d(act);
-        log.d(offsetTop);
-    },
-    deactivated() {
-        offsetTop = $(document).scrollTop();
-        offsetTop = 100;
-        log.d("deactivated="+offsetTop);
     }
 }
 </script>
@@ -74,7 +67,6 @@ export default {
     .root {
         height: 100%;
         box-sizing: border-box;
-        overflow: scroll;
     }
 
     .title {

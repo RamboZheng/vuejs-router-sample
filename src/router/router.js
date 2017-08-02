@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     routes: [
         { 
+            name: 'new',
             path: '/new', 
             component: NewList,
             meta: {
@@ -15,6 +16,7 @@ const router = new VueRouter({
             }
         },
         { 
+            name: 'detail',
             path: '/detail/:title', 
             component: NewDetail 
         }

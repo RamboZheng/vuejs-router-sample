@@ -4,6 +4,9 @@ import Vue from 'vue';
 import log from '../common/log.js';
 import router from '../router/router.js'
 import store from '../store/store.js'
+import ScrollbarPlugin from '../plugin/ScrollbarPlugin'
+
+Vue.use(ScrollbarPlugin);
 
 /**
  * main
